@@ -8,6 +8,10 @@ RSpec.describe StringCalculator do
         
     it "returns 1 for input string '1'" do
       expect(StringCalculator.new.add('1')).to eq(1)
-    end            
+    end 
+    
+    it "returns n for input string 'n' where n is any positive number" do
+      expect(StringCalculator.new.add('98888888888')).to eq(98888888888)
+    end 
   end  
 end
