@@ -41,5 +41,17 @@ RSpec.describe StringCalculator do
     it "returns 6 for input string '1\n2\n3'" do 
       expect(StringCalculator.new.add("1\n2\n3")).to eq(6)
     end
+
+    it "raises an error for invalid input '1,\n'" do
+      expect { StringCalculator.new.add("1,\n") }.to raise_error("Input is invalid") 
+    end
+
+    it "raises an error for invalid input '\n,\n,\n'" do
+      expect { StringCalculator.new.add("\n,\n,\n") }.to raise_error("Input is invalid") 
+    end
+    
+    it "returns 3 for input string '1,\n2'" do
+      expect(StringCalculator.new.add("1,\n2")).to eq(3)
+    end
   end  
 end
