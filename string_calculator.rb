@@ -9,6 +9,7 @@ class StringCalculator
     validate_numbers(numbers)
     numbers = split_by_newline(numbers)
 
+    check_for_negative_numbers(numbers)
     sum_numbers(numbers)
   end
 
@@ -32,8 +33,12 @@ class StringCalculator
     raise ArgumentError, "Input is invalid" if numbers.include?("\n")
   end
 
-  def split_by_newline(numbers)
+  def check_for_negative_numbers(numbers)
+    negatives = numbers.select { |num| num.to_i < 0 }
+    raise "negative numbers not allowed: #{negatives.join(', ')}" unless negatives.empty?
+  end
 
+  def split_by_newline(numbers)
     numbers.flat_map { |number| number.split("\n") }
   end
 
