@@ -29,6 +29,7 @@ class StringCalculator
     numbers.split(delimiter)
   end
 
+  # For invlid input like "1,\n"
   def validate_numbers(numbers)
     raise ArgumentError, "Input is invalid" if numbers.include?("\n")
   end
@@ -38,6 +39,7 @@ class StringCalculator
     raise "negative numbers not allowed: #{negatives.join(', ')}" unless negatives.empty?
   end
 
+  # For input like "1\n2,3"
   def split_by_newline(numbers)
     numbers.flat_map { |number| number.split("\n") }
   end
