@@ -29,5 +29,17 @@ RSpec.describe StringCalculator do
     it "returns sum of N numbers for input string  of comma separated N numbers" do # N is any positive number
       expect(StringCalculator.new.add('1,2,3,4,5,6,7,8,9')).to eq(45)
     end 
+
+    it "returns 6 for input string '1\n2,3'  " do
+      expect(StringCalculator.new.add("1\n2,3")).to eq(6)
+    end 
+
+    it "returns 3 for input string '1\n2'" do
+      expect(StringCalculator.new.add("1\n2")).to eq(3)
+    end
+
+    it "returns 6 for input string '1\n2\n3'" do 
+      expect(StringCalculator.new.add("1\n2\n3")).to eq(6)
+    end
   end  
 end
