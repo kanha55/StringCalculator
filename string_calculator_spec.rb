@@ -21,5 +21,9 @@ RSpec.describe StringCalculator do
     it "returns sum of two numbers for input string  of comma separated two numbers" do
       expect(StringCalculator.new.add('9999,1')).to eq(10000)
     end 
+
+    it "returns sum of three numbers for input string  of comma separated three numbers" do
+      expect(StringCalculator.new.add('9999,99,1')).to eq(10099)
+    end 
   end  
 end
