@@ -53,5 +53,14 @@ RSpec.describe StringCalculator do
     it "returns 3 for input string '1,\n2'" do
       expect(StringCalculator.new.add("1,\n2")).to eq(3)
     end
+
+    it "returns 3 for input string '//;\n1;2' with custom delimiter" do
+      expect(StringCalculator.new.add("//;\n1;2")).to eq(3)
+    end
+
+    it "returns 3 for input string '//[\n1[2' with custom delimiter" do
+      expect(StringCalculator.new.add("//[\n1[2")).to eq(3)
+    end
+
   end  
 end

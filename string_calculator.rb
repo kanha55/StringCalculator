@@ -2,7 +2,10 @@ class StringCalculator
   def add(numbers)
     return 0 if numbers.empty?
 
-    numbers = split_by_comma(numbers)
+    numbers, delimiter = extract_delimiter(numbers)
+
+    numbers = split_by_delimiter(numbers, delimiter)
+
     validate_numbers(numbers)
     numbers = split_by_newline(numbers)
 
@@ -11,8 +14,18 @@ class StringCalculator
 
   private
 
-  def split_by_comma(numbers)
-    numbers.split(',')
+  def extract_delimiter(numbers)
+    if numbers.start_with?('//')
+      delimiter, numbers = numbers.split("\n")
+      delimiter = delimiter[2..-1]
+    else
+      delimiter = ','
+    end
+    [numbers, delimiter]
+  end
+  
+  def split_by_delimiter(numbers, delimiter)
+    numbers.split(delimiter)
   end
 
   def validate_numbers(numbers)
@@ -20,6 +33,7 @@ class StringCalculator
   end
 
   def split_by_newline(numbers)
+
     numbers.flat_map { |number| number.split("\n") }
   end
 
